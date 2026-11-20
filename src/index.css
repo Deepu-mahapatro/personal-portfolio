@@ -1166,26 +1166,26 @@ html .whatsapp-card:focus-visible .whatsapp-cta {
   opacity: 1;
 }
 
-/* Continuous smooth horizontal marquee for technology stack */
+/* Smooth horizontal marquee for technology stack (exactly 12 cards, no duplicates) */
 @keyframes marquee {
   0% {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(calc(max(0px, 100% - 100vw + 64px) * -1));
   }
 }
 
 .animate-marquee {
   display: flex;
   width: max-content;
-  animation: marquee 45s linear infinite;
+  animation: marquee 28s ease-in-out infinite alternate;
   will-change: transform;
 }
 
 @media (max-width: 768px) {
   .animate-marquee {
-    animation-duration: 35s;
+    animation-duration: 22s;
   }
 }
 

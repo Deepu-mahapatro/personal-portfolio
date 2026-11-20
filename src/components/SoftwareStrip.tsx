@@ -24,11 +24,9 @@ const TOOLS: ToolItem[] = TECH_STACK.map((label) => {
 /**
  * Interactive Software & Tools strip featuring authentic, recognizable brand logos
  * with continuous horizontal marquee scrolling, pause-on-hover, and sleek glassmorphism.
+ * Renders exactly 12 unique technology cards without duplicates.
  */
 export const SoftwareStrip: React.FC = () => {
-  // Double the array for seamless infinite marquee loop
-  const marqueeItems = [...TOOLS, ...TOOLS];
-
   return (
     <div className="relative w-full max-w-7xl mt-24 z-10 flex flex-col items-center overflow-hidden">
       <div className="red-halo" aria-hidden="true" />
@@ -43,9 +41,9 @@ export const SoftwareStrip: React.FC = () => {
       {/* Marquee Carousel Container with side fade gradients */}
       <div className="relative w-full overflow-hidden py-4 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
         <div className="flex w-max gap-4 md:gap-6 animate-marquee hover:[animation-play-state:paused]">
-          {marqueeItems.map((tool, index) => (
+          {TOOLS.map((tool) => (
             <div
-              key={`${tool.label}-${index}`}
+              key={tool.label}
               className="matrix-item glass glass-grid-card group shrink-0 w-[124px] h-[168px] sm:w-[136px] sm:h-[185px] md:w-[150px] md:h-[200px] rounded-3xl flex flex-col items-center justify-center p-3 transition-all duration-300 hover:scale-105 hover:border-red-500/50 hover:bg-white/[0.06]"
               style={{ '--tool-color': tool.color } as React.CSSProperties}
             >
